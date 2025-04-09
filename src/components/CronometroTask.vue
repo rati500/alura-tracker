@@ -17,7 +17,13 @@ export default {
 </script>
 
 <template>
-    <section>
-        <strong>{{ tempoDecorrido }}</strong>
+    <section >
+        <strong class="display">{{ tempoDecorrido }}</strong>
     </section>
 </template>
+
+<style>
+.display {
+    color: var(--texto-primario);   
+}
+</style>

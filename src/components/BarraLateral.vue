@@ -1,22 +1,38 @@
 <template>
-<header>
+  <header>
     <h1>
-        <img src="../assets/logo.png" alt="">
+      <img src="../assets/logo.png" alt="">
     </h1>
-</header>
+    <button class="button" @click="mudarOTema">
+      {{ textoBtnTema }}
+    </button>
+  </header>
 </template>
 
 <script>
 
 export default {
   name: 'BarraLateral',
+  emits: ['temaAlterado'],
   data() {
     return {
-      // Define any data properties here if needed
+      modoEscuro: false,
     };
   },
+  computed: {
+    textoBtnTema() {
+      if (this.modoEscuro) {
+        return 'Desativar tema escuro';
+      }
+      return 'Ativar tema escuro';
+    },
+  },
   methods: {
-    // Define any methods here if needed
+    mudarOTema() {
+      this.modoEscuro = !this.modoEscuro;
+      this.$emit('temaAlterado', this.modoEscuro);
+
+    }
   },
 };
 
@@ -28,11 +44,14 @@ header {
   background: #0d3b66;
   width: 100%;
   height: 100vh;
+  text-align: center;
 }
+
 @media only screen and (max-width: 768px) {
   header {
     padding: 2.5rem;
     height: auto;
+    
   }
 }
 </style>
